@@ -1,6 +1,8 @@
 ﻿string mensagemBoasVindas = "Bem vindo ao melhor app de música";
 
-void ExibirBoasVindas() 
+List<string> listaDasBandas = new List<string>(); 
+
+void ExibirLogo() 
 {
     Console.WriteLine(@"
 ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
@@ -12,7 +14,11 @@ void ExibirBoasVindas()
     Console.WriteLine(mensagemBoasVindas);
 }
 
+
+
 void ExibirMenuDeOpcoes() {
+
+    ExibirLogo();
     Console.WriteLine("Digite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para mostrar todas as bandas");
     Console.WriteLine("Digite 3 para avaliar uma banda");
@@ -25,10 +31,11 @@ void ExibirMenuDeOpcoes() {
 
     switch(opcaoEscolhidaNumerica)
     {
-        case 1: Console.WriteLine("Você digitou a opção " + opcaoEscolhidaNumerica);
+        case 1: 
+            RegistrarBanda();
             break;
         case 2:
-            Console.WriteLine("Você digitou a opção " + opcaoEscolhidaNumerica);
+            MostrarAsBandas();
             break;
         case 3:
             Console.WriteLine("Você digitou a opção " + opcaoEscolhidaNumerica);
@@ -37,7 +44,7 @@ void ExibirMenuDeOpcoes() {
             Console.WriteLine("Você digitou a opção " + opcaoEscolhidaNumerica);
             break;
         case -1:
-            Console.WriteLine("Você digitou a opção " + opcaoEscolhidaNumerica);
+            Console.WriteLine("Tchauzinho ");
             break; 
         default: Console.WriteLine("Opção inválida");
             break;
@@ -45,5 +52,24 @@ void ExibirMenuDeOpcoes() {
     }
 }
 
-ExibirBoasVindas();
+void RegistrarBanda() {
+    Console.Clear();
+    Console.WriteLine("Registro de bandas");
+    Console.Write("Digite o nome da banda que deseja registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    listaDasBandas.Add(nomeDaBanda);
+    Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso");
+    Thread.Sleep(2000);
+    Console.Clear() ;
+    ExibirMenuDeOpcoes();
+}
+
+void MostrarAsBandas() 
+{
+    Console.Clear();
+    Console.WriteLine("Bandas registradas");
+    Console.WriteLine("------------------\n");
+    foreach (string s in listaDasBandas) { Console.WriteLine(s); }
+}
+
 ExibirMenuDeOpcoes();
