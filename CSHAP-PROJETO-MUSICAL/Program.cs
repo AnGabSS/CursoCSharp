@@ -69,7 +69,9 @@ void MostrarAsBandas()
     Console.Clear();
     Console.WriteLine("Bandas registradas");
     Console.WriteLine("------------------\n");
-    foreach (string s in listaDasBandas) { Console.WriteLine(s); }
+    
+    // ao invés do foreach, também poderia usar o --- for (int i = 0; i < listaDasBandas.Count; i++){}
+    foreach (string s in listaDasBandas) { Console.WriteLine($"Banda: {s}"); }
 }
 
 ExibirMenuDeOpcoes();
